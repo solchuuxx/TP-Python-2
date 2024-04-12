@@ -14,7 +14,6 @@ cursor = db.cursor()
 cursor.execute("DROP TABLE IF EXISTS localidades")
 print("Tabla 'localidades' eliminada.")
 cursor.execute("""
-
             CREATE TABLE localidades (
             provincia VARCHAR(100),
             id INT,
@@ -44,7 +43,8 @@ for provincia in lista_provincias:
     nombre_archivo = os.path.join(ruta_carpeta, provincia+".csv")
     with open(nombre_archivo, mode='w', newline='', encoding="utf-8") as file:
         writer = csv.writer(file)
-        writer.writerows(sql)
+        for row in sql:
+            writer.writerow(row[1:])
 
 print("Datos cargados correctamente")
 
