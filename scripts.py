@@ -43,8 +43,7 @@ for provincia in lista_provincias:
     nombre_archivo = os.path.join(ruta_carpeta, provincia+".csv")
     with open(nombre_archivo, mode='w', newline='', encoding="utf-8") as file:
         writer = csv.writer(file)
-        for row in sql:
-            writer.writerow(row[1:])
+        writer.writerows(sql)
 
 print("Datos cargados correctamente")
 
